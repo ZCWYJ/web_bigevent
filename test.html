@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/assets/lib/jquery.js"></script>
+</head>
+<body>
+    <form action="" id="form_1">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button type="submit">提交</button>
+    </form>
+
+    <script>
+        console.log($("#form_1 [name=username]"));
+        $("#form_1").on("submit",function(e){
+            e.preventDefault();
+            $.post("http://api-breakingnews-web.itheima.net",
+            {username: $("#form_1 [name=username]").val(),password: $("#form_1[name=password]").val()},
+            function(res){
+                if(res.status !== 0){
+                    console.log("注册失败");
+                    retrun;
+                }
+                console.log("注册成功");
+            });
+        })
+    </script>
+</body>
+</html>
